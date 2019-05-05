@@ -1,0 +1,23 @@
+server:
+  port: 9881
+
+spring:
+  application:
+    name: EEDA-AI-SERVICE
+    
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://39.108.83.208:3306/eeda_ai?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC&useSSL=false
+    username: root
+    password: EEDA-root-2019
+    
+  jpa:
+    properties:
+      hibernate: 
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
+  thymeleaf:
+    cache: false
