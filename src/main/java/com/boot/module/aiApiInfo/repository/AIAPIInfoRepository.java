@@ -8,5 +8,6 @@ import com.boot.module.aiApiInfo.bean.AIAPIInfo;
 @Repository
 public interface AIAPIInfoRepository extends JpaRepository<AIAPIInfo, String> {
 	
+	AIAPIInfo findByEMac(String eMac);
 	
 }

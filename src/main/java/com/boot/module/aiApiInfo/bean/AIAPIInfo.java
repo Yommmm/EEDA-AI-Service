@@ -29,13 +29,17 @@ public class AIAPIInfo {
     @ApiModelProperty(value = "数据来源设备mac地址")
 	private String eMac;
     
-    @Column(name = "e_count")
+    @Column(name = "e_counter")
     @ApiModelProperty(value = "当天使用次数")
-    private Integer eCount;
+    private Integer eCounter;
 	
     @Column(name = "create_time")
     @ApiModelProperty(value = "创建时间")
     private Date createTime;
+    
+    @Column(name = "e_standard")
+    @ApiModelProperty(value = "每日限制条数")
+    private Integer eStandard;
 
 	public String getEaaInfoId() {
 		return eaaInfoId;
@@ -53,12 +57,12 @@ public class AIAPIInfo {
 		this.eMac = eMac;
 	}
 
-	public Integer geteCount() {
-		return eCount;
+	public Integer geteCounter() {
+		return eCounter;
 	}
 
-	public void seteCount(Integer eCount) {
-		this.eCount = eCount;
+	public void seteCounter(Integer eCounter) {
+		this.eCounter = eCounter;
 	}
 
 	public Date getCreateTime() {
@@ -68,5 +72,13 @@ public class AIAPIInfo {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
-    
+
+	public Integer geteStandard() {
+		return eStandard;
+	}
+
+	public void seteStandard(Integer eStandard) {
+		this.eStandard = eStandard;
+	}
+
 }
