@@ -28,7 +28,7 @@ public class AIAPIInfoService {
 	public String gesture(String eMac, MultipartFile file) throws Exception {
 		
 		AIAPIInfo apiInfo = repository.findByEMac(eMac);
-		if(apiInfo.geteCounter() > 2000) {
+		if(apiInfo.geteCounter() > apiInfo.geteStandard()) {
 			return "当日已超过使用条数，请联系维护人员购买！";
 		}
 		apiInfo.seteCounter(apiInfo.geteCounter() + 1);
@@ -43,7 +43,9 @@ public class AIAPIInfoService {
 		String result = HttpUtil.post(GlobalConstaints.GESTURE_URL, accessToken, param);
 		Map<?, ?> resultMap = JSONObject.parseObject(result, Map.class);
 		
-		if(110 == Integer.valueOf(resultMap.get("error_code").toString())) {
+		if(null != resultMap.get("error_code") &&
+				(111 == Integer.valueOf(resultMap.get("error_code").toString()) || 
+				110 == Integer.valueOf(resultMap.get("error_code").toString()))) {
 			accessToken = AccessUtil.getAccessToken();
 			result = HttpUtil.post(GlobalConstaints.GESTURE_URL, accessToken, param);
 			resultMap = JSONObject.parseObject(result, Map.class);
